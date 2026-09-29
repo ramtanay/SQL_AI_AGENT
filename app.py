@@ -172,7 +172,7 @@ with tab3:
         """
         This application demonstrates an AI Agent
         that can interact with a SQLite database.
-        Created By :- Amitava Chatterjee
+        Created By :- Ramtanay Chakraborty
 
         Technologies:
 
