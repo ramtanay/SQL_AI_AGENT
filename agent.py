@@ -20,11 +20,17 @@ from database import (
 )
 
 
-load_dotenv(find_dotenv(),override=True)
-client = OpenAI(
-    # api_key=os.getenv("OPENAI_API_KEY")
-    api_key=os.environ["OPENAI_API_KEY"]
-)
+api_key = None
+try:
+    api_key = st.secrets["OPENAI_API_KEY"]
+except Exception:
+    api_key = os.environ.get("OPENAI_API_KEY")
+
+if not api_key:
+    raise ValueError("OPENAI_API_KEY is missing! Please configure it in Streamlit Cloud Secrets or your local .env file.")
+
+# Initialize the OpenAI client correctly
+client = OpenAI(api_key=api_key)
 
 
 tools = [
